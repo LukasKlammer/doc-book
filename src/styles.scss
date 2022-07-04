@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  --font-light-grey: #8EA1B1;
+  --font-dark-grey: #5B7185;
+  --font-blue: #01B6E6;
+  --font-white: #FFFFFF;
+  --font-black: #34414C;
+}
+
+.global-content-width {
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+}
