@@ -1,3 +1,5 @@
-<db-search [allSpecialities]="allSpecialities"></db-search>
+<main class="global-content-width">
+  <db-search [allSpecialities]="allSpecialities"></db-search>
+  <db-doc-card *ngFor="let card of [0]"></db-doc-card>
+</main>
 
-<db-doc-card *ngFor="let card of [0, 1, 2, 3, 4]"></db-doc-card>
