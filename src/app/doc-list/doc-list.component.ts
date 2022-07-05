@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TitleStrategy } from '@angular/router';
 
 @Component({
   selector: 'db-doc-list',
@@ -109,21 +110,43 @@ export class DocListComponent implements OnInit {
   }
   ]
 
-  allSpecialities = ['Alleskönner', 'Zauberer', 'Superdoc'];
-  allCitys = ['Musterhausen', 'München', 'Basel', 'Dochausen'];
+  allSpecialities = [];
+  allCitys = [];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.getAllSpezialities();
+    this.getAllCitys();
   }
 
+  /**
+   * this methods iterates all doctors and all specialities. If a speciality isn't already available in the array allSpecialitys it will be added
+   */
   getAllSpezialities() {
     for (let i = 0; i < this.doctors.length; i++) {
       const doctor = this.doctors[i];
-      console.log(doctor);
-
-
+      for (let j = 0; j < doctor['specialities'].length; j++) {
+        const singleSpeciality = doctor['specialities'][j];
+        if (!this.allSpecialities.find((speciality) => speciality == singleSpeciality)) {
+          this.allSpecialities.push(singleSpeciality);
+        }
+      }
     }
+    this.allSpecialities.sort();
   }
 
+  /**
+   * this methods iterates all doctors and all citys. If a city isn't already available in the array all it will be added
+   */
+  getAllCitys() {
+    for (let i = 0; i < this.doctors.length; i++) {
+      const singleCity = this.doctors[i].city;
+      if (!this.allCitys.find((city) => city == singleCity)) {
+        this.allCitys.push(singleCity);
+      }
+    }
+    this.allCitys.sort();
+  }
 }
+
