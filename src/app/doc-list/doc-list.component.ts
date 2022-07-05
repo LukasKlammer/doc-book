@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocListComponent implements OnInit {
 
- doctors = [{
+  doctors = [{
     "id": 1,
     "title": "Dr. med.",
     "first_name": "Anton",
@@ -18,16 +18,16 @@ export class DocListComponent implements OnInit {
     "zipcode": "81669",
     "city": "München",
     "opening_hours": {
-        "monday": "08:00 - 16:00",
-        "tuesday": "08:00 - 18:00",
-        "wednesday": "08:00 - 16:00",
-        "thursday": "08:00 - 18:00",
-        "friday": "08:00 - 14:00",
-        "saturday": "closed",
-        "sunday": "closed"
+      "monday": "08:00 - 16:00",
+      "tuesday": "08:00 - 18:00",
+      "wednesday": "08:00 - 16:00",
+      "thursday": "08:00 - 18:00",
+      "friday": "08:00 - 14:00",
+      "saturday": "closed",
+      "sunday": "closed"
     }
-},
-{
+  },
+  {
     "id": 2,
     "title": "Dr. med.",
     "first_name": "Christina",
@@ -38,16 +38,16 @@ export class DocListComponent implements OnInit {
     "zipcode": "80336",
     "city": "München",
     "opening_hours": {
-        "monday": "08:00 - 16:00",
-        "tuesday": "08:00 - 18:00",
-        "wednesday": "closed",
-        "thursday": "08:00 - 18:00",
-        "friday": "08:00 - 14:00",
-        "saturday": "closed",
-        "sunday": "closed"
+      "monday": "08:00 - 16:00",
+      "tuesday": "08:00 - 18:00",
+      "wednesday": "closed",
+      "thursday": "08:00 - 18:00",
+      "friday": "08:00 - 14:00",
+      "saturday": "closed",
+      "sunday": "closed"
     }
-},
-{
+  },
+  {
     "id": 3,
     "title": "Dr. med. dent.",
     "first_name": "Eberhard",
@@ -58,16 +58,16 @@ export class DocListComponent implements OnInit {
     "zipcode": "München",
     "city": "München",
     "opening_hours": {
-        "monday": "08:00 - 16:00",
-        "tuesday": "08:00 - 18:00",
-        "wednesday": "closed",
-        "thursday": "08:00 - 18:00",
-        "friday": "08:00 - 14:00",
-        "saturday": "closed",
-        "sunday": "closed"
+      "monday": "08:00 - 16:00",
+      "tuesday": "08:00 - 18:00",
+      "wednesday": "closed",
+      "thursday": "08:00 - 18:00",
+      "friday": "08:00 - 14:00",
+      "saturday": "closed",
+      "sunday": "closed"
     }
-},
-{
+  },
+  {
     "id": 4,
     "title": "",
     "first_name": "Klara",
@@ -78,16 +78,16 @@ export class DocListComponent implements OnInit {
     "zipcode": "80303",
     "city": "München",
     "opening_hours": {
-        "monday": "08:00 - 16:00",
-        "tuesday": "08:00 - 18:00",
-        "wednesday": "08:00 - 16:00",
-        "thursday": "08:00 - 18:00",
-        "friday": "08:00 - 14:00",
-        "saturday": "closed",
-        "sunday": "closed"
+      "monday": "08:00 - 16:00",
+      "tuesday": "08:00 - 18:00",
+      "wednesday": "08:00 - 16:00",
+      "thursday": "08:00 - 18:00",
+      "friday": "08:00 - 14:00",
+      "saturday": "closed",
+      "sunday": "closed"
     }
-},
-{
+  },
+  {
     "id": 5,
     "title": "Univ-Prof. Dr. med. dent. Dr. hc.",
     "first_name": "Sonja-Anette",
@@ -98,23 +98,32 @@ export class DocListComponent implements OnInit {
     "zipcode": "80336",
     "city": "München",
     "opening_hours": {
-        "monday": "08:00 - 16:00",
-        "tuesday": "08:00 - 18:00",
-        "wednesday": "08:00 - 16:00",
-        "thursday": "08:00 - 18:00",
-        "friday": "08:00 - 14:00",
-        "saturday": "closed",
-        "sunday": "closed"
+      "monday": "08:00 - 16:00",
+      "tuesday": "08:00 - 18:00",
+      "wednesday": "08:00 - 16:00",
+      "thursday": "08:00 - 18:00",
+      "friday": "08:00 - 14:00",
+      "saturday": "closed",
+      "sunday": "closed"
     }
-}
-]
+  }
+  ]
 
-allSpecialities = ['Alleskönner', 'Besserwisser', 'Superdoc'];
-allCitys = ['Musterhausen', 'München', 'Basel'];
+  allSpecialities = ['Alleskönner', 'Zauberer', 'Superdoc'];
+  allCitys = ['Musterhausen', 'München', 'Basel', 'Dochausen'];
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getAllSpezialities() {
+    for (let i = 0; i < this.doctors.length; i++) {
+      const doctor = this.doctors[i];
+      console.log(doctor);
+
+
+    }
   }
 
 }

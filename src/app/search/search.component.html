@@ -5,42 +5,34 @@
            placeholder=""
            aria-label="Fachgebiet"
            matInput
-           [formControl]="myControl"
-           [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions  | async" [value]="option">
+           [formControl]="controlSpecialitiesInput"
+           [matAutocomplete]="autoSpeciality">
+    <mat-autocomplete #autoSpeciality="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptionsSpecialities  | async" [value]="option">
         {{option}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
   <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Fachgebiet</mat-label>
+    <mat-label>Ort</mat-label>
     <input type="text"
            placeholder=""
-           aria-label="Fachgebiet"
+           aria-label="Ort"
            matInput
-           [formControl]="myControl"
-           [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions  | async" [value]="option">
+           [formControl]="controlCityInput"
+           [matAutocomplete]="autoCity">
+    <mat-autocomplete #autoCity="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptionsCitys  | async" [value]="option">
         {{option}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Fachgebiet</mat-label>
-    <input type="text"
-           placeholder=""
-           aria-label="Fachgebiet"
-           matInput
-           [formControl]="myControl"
-           [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions  | async" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+
+  <button mat-flat-button color="primary">
+    <mat-icon aria-hidden="false" aria-label="search-icon">search</mat-icon>
+    Suchen
+  </button>
+
 </form>

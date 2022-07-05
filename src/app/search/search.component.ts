@@ -10,23 +10,34 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class SearchComponent implements OnInit {
 
-  @Input() allSpecialities:string[] = ['test'];
-  myControl = new FormControl('');
-  filteredOptions: Observable<string[]>;
+  @Input() allSpecialities:string[] = [];
+  controlSpecialitiesInput = new FormControl('');
+  filteredOptionsSpecialities: Observable<string[]>;
+  @Input() allCitys:string[] = [];
+  controlCityInput = new FormControl('');
+  filteredOptionsCitys: Observable<string[]>;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.filteredOptionsSpecialities = this.controlSpecialitiesInput.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value || '')),
+      map(value => this._filterSpecialities(value || '')),
+    );
+    this.filteredOptionsCitys = this.controlCityInput.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filterCitys(value || '')),
     );
   }
 
-  private _filter(value: string): string[] {
+  private _filterSpecialities(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.allSpecialities.filter(speciality => speciality.toLowerCase().includes(filterValue));
+  }
+
+  private _filterCitys(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.allCitys.filter(city => city.toLowerCase().includes(filterValue));
   }
 
 }
