@@ -114,7 +114,7 @@ export class DoctorsService {
   constructor() {
     this.getAllSpezialities();
     this.getAllCitys();
-    this.getFilteredDoctors('Radiologie', 'München');
+    this.getFilteredDoctors('', '');
   }
 
 
@@ -154,7 +154,7 @@ export class DoctorsService {
    * @param {string} city is a string from the city-input-field
    * @returns {Object[]} an array with all doctors that match to input city and speciality
    */
-  private getFilteredDoctors(speciality: string, city: string) {
+  public getFilteredDoctors(speciality: string, city: string) {
     let filteredByCity = this.filterByCity(city);
     let filteredByCityandSpeciality = this.filterBySpeciality(filteredByCity, speciality);
     this.filteredDoctors = filteredByCityandSpeciality;

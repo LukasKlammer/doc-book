@@ -1,5 +1,5 @@
 <main class="global-content-width">
   <db-search></db-search>
-  <db-doc-card *ngFor="let oneDoctor of doctorsService.doctors" [doctor]="oneDoctor"></db-doc-card>
+  <db-doc-card *ngFor="let oneDoctor of doctorsService.filteredDoctors" [doctor]="oneDoctor"></db-doc-card>
 </main>
 
