@@ -54,15 +54,11 @@ export class SearchComponent implements OnInit {
     this.doctorsService.getFilteredDoctors(this.controlSpecialitiesInput.value, this.controlCityInput.value);
   }
 
-  public clearCityInput() {
-
-  }
-
-  public clearSpecialityInput() {
-
-  }
-
-  public clearInput(input : HTMLInputElement){
-    input.value = '';
+  public clearInput(input : HTMLInputElement){;
+    if (input.ariaLabel == "Ort") {
+      this.controlCityInput.setValue('');
+    } else {
+      this.controlSpecialitiesInput.setValue('');
+    }
   }
 }
