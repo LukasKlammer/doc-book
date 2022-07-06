@@ -61,4 +61,8 @@ export class SearchComponent implements OnInit {
   public clearSpecialityInput() {
 
   }
+
+  public clearInput(input : HTMLInputElement){
+    input.value = '';
+  }
 }

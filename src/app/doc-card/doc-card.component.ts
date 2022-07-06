@@ -11,11 +11,14 @@ export class DocCardComponent implements OnInit {
   @Input() doctor: object = [];
   weekdays: string[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
   weekdaysGerman: string[] = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
-
-  constructor() { }
+  
+  germanWeekDays = new Map();
+  constructor() {
+    this.germanWeekDays.set('monday', 'Montag');
+  }
 
   ngOnInit(): void {
-
+    this.germanWeekDays.get('monday');
   }
 
 }

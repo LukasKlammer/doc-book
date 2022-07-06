@@ -2,13 +2,14 @@
   <form>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Fachgebiet</mat-label>
-      <input type="text"
+      <input #inputSpeciality
+             type="text"
              placeholder=""
              aria-label="Fachgebiet"
              matInput
              [formControl]="controlSpecialitiesInput"
              [matAutocomplete]="autoSpeciality">
-      <button type='button' *ngIf="controlCityInput" matSuffix mat-icon-button aria-label="Clear" (click)="clearSpecialityInput()">
+      <button type='button' *ngIf="controlCityInput" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput(inputSpeciality)">
         <mat-icon>close</mat-icon>
       </button>
       <mat-autocomplete #autoSpeciality="matAutocomplete">
@@ -20,13 +21,14 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Ort</mat-label>
-      <input type="text"
+      <input #inputCity
+             type="text"
              placeholder=""
              aria-label="Ort"
              matInput
              [formControl]="controlCityInput"
              [matAutocomplete]="autoCity">
-      <button type='button' *ngIf="controlCityInput" matSuffix mat-icon-button aria-label="Clear" (click)="clearCityInput()">
+      <button type='button' *ngIf="controlCityInput" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput(inputCity)">
           <mat-icon>close</mat-icon>
       </button>
       <mat-autocomplete #autoCity="matAutocomplete">

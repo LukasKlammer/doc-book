@@ -117,21 +117,20 @@ export class DoctorsService {
     this.getFilteredDoctors('', '');
   }
 
+  removeDuplicates(arr){
+    return arr.filter((elm, index)=> arr.indexOf(elm) === index);
+  }
+
 
   /**
    * this methods iterates all doctors and all specialities. If a speciality isn't already available in the array allSpecialitys it will be added
    */
   private getAllSpezialities() {
-    for (let i = 0; i < this.doctors.length; i++) {
-      const doctor = this.doctors[i];
-      for (let j = 0; j < doctor['specialities'].length; j++) {
-        const singleSpeciality = doctor['specialities'][j];
-        if (!this.allSpecialities.find((speciality) => speciality == singleSpeciality)) {
-          this.allSpecialities.push(singleSpeciality);
-        }
-      }
-    }
-    this.allSpecialities.sort();
+    const allSpecialitiesArrays = this.doctors.map( d => d.specialities );
+    const allSpecialitiesFlat = allSpecialitiesArrays.flat();
+    const deduplicatedSpecialities = this.removeDuplicates(allSpecialitiesFlat);
+    deduplicatedSpecialities.sort();
+    this.allSpecialities = deduplicatedSpecialities;
   }
 
   /**
