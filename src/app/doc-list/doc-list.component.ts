@@ -148,5 +148,18 @@ export class DocListComponent implements OnInit {
     }
     this.allCitys.sort();
   }
+
+  // getAllWeekdays() {
+  //   for (let i = 0; i < this.doctors.length; i++) {
+  //     const doctor = this.doctors[i];
+  //     const days = doctor['opening_hours'];
+  //     for (let i in days) {
+  //       if (!this.allWeekdays.find((weekday) => weekday == i)) {
+  //         this.allWeekdays.push(i);
+  //       }
+  //     }
+  //     console.log(this.allWeekdays);
+  //   }
+  // }
 }
 
