@@ -1,38 +1,50 @@
-<form>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Fachgebiet</mat-label>
-    <input type="text"
-           placeholder=""
-           aria-label="Fachgebiet"
-           matInput
-           [formControl]="controlSpecialitiesInput"
-           [matAutocomplete]="autoSpeciality">
-    <mat-autocomplete #autoSpeciality="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptionsSpecialities  | async" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+<div class="global-content-width search-box">
+  <form>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Fachgebiet</mat-label>
+      <input type="text"
+             placeholder=""
+             aria-label="Fachgebiet"
+             matInput
+             [formControl]="controlSpecialitiesInput"
+             [matAutocomplete]="autoSpeciality">
+      <button type='button' *ngIf="controlCityInput" matSuffix mat-icon-button aria-label="Clear" (click)="clearSpecialityInput()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-autocomplete #autoSpeciality="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptionsSpecialities  | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Ort</mat-label>
-    <input type="text"
-           placeholder=""
-           aria-label="Ort"
-           matInput
-           [formControl]="controlCityInput"
-           [matAutocomplete]="autoCity">
-    <mat-autocomplete #autoCity="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptionsCitys  | async" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Ort</mat-label>
+      <input type="text"
+             placeholder=""
+             aria-label="Ort"
+             matInput
+             [formControl]="controlCityInput"
+             [matAutocomplete]="autoCity">
+      <button type='button' *ngIf="controlCityInput" matSuffix mat-icon-button aria-label="Clear" (click)="clearCityInput()">
+          <mat-icon>close</mat-icon>
+      </button>
+      <mat-autocomplete #autoCity="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptionsCitys  | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
 
-  <button type='button' mat-flat-button color="primary" (click)="searchDoctors()">
-    <mat-icon aria-hidden="false" aria-label="search-icon">search</mat-icon>
-    Suchen
-  </button>
+    <button type='button' mat-flat-button color="primary" (click)="searchDoctors()">
+      <mat-icon aria-hidden="false" aria-label="search-icon">search</mat-icon>
+      Suchen
+    </button>
 
-</form>
+  </form>
+
+
+
+</div>
+

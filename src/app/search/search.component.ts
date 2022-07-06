@@ -35,18 +35,30 @@ export class SearchComponent implements OnInit {
   }
 
   private _filterSpecialities(value: string): string[] {
+    if (!value) { // searchDoctors, when input cleared
+      this.searchDoctors();
+    }
     const filterValue = value.toLowerCase();
     return this.allSpecialities.filter(speciality => speciality.toLowerCase().includes(filterValue));
   }
 
   private _filterCitys(value: string): string[] {
+    if (!value) { // searchDoctors, when input cleared
+      this.searchDoctors();
+    }
     const filterValue = value.toLowerCase();
     return this.allCitys.filter(city => city.toLowerCase().includes(filterValue));
   }
 
   public searchDoctors() {
-
-    this.doctorsService.getFilteredDoctors('', 'München');
+    this.doctorsService.getFilteredDoctors(this.controlSpecialitiesInput.value, this.controlCityInput.value);
   }
 
+  public clearCityInput() {
+
+  }
+
+  public clearSpecialityInput() {
+
+  }
 }
