@@ -1,5 +1,5 @@
 <main class="global-content-width">
-  <db-search [allSpecialities]="allSpecialities" [allCitys]="allCitys"></db-search>
-  <db-doc-card [doctor]="oneDoctor" *ngFor="let oneDoctor of doctors"></db-doc-card>
+  <db-search></db-search>
+  <db-doc-card *ngFor="let oneDoctor of doctorsService.doctors" [doctor]="oneDoctor"></db-doc-card>
 </main>
 

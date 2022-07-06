@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { DoctorsService } from '../shared/doctors.service';
 
 @Component({
   selector: 'db-search',
@@ -10,14 +11,17 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class SearchComponent implements OnInit {
 
-  @Input() allSpecialities:string[] = [];
+  allSpecialities:string[] = ['Spezialität'];
   controlSpecialitiesInput = new FormControl('');
   filteredOptionsSpecialities: Observable<string[]>;
-  @Input() allCitys:string[] = [];
+  allCitys:string[] = [];
   controlCityInput = new FormControl('');
   filteredOptionsCitys: Observable<string[]>;
 
-  constructor() { }
+  constructor(public doctorsService: DoctorsService) {
+    this.allSpecialities = this.doctorsService.allSpecialities;
+    this.allCitys = this.doctorsService.allCitys;
+  }
 
   ngOnInit(): void {
     this.filteredOptionsSpecialities = this.controlSpecialitiesInput.valueChanges.pipe(
