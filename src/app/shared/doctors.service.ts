@@ -107,20 +107,21 @@ export class DoctorsService {
   }
   ]
 
+  filteredDoctors = []
   allSpecialities = [];
   allCitys = [];
 
   constructor() {
     this.getAllSpezialities();
     this.getAllCitys();
-    this.getFilteredDoctors('Zahnmedizin', 'München');
+    this.getFilteredDoctors('Radiologie', 'München');
   }
 
 
   /**
    * this methods iterates all doctors and all specialities. If a speciality isn't already available in the array allSpecialitys it will be added
    */
-  getAllSpezialities() {
+  private getAllSpezialities() {
     for (let i = 0; i < this.doctors.length; i++) {
       const doctor = this.doctors[i];
       for (let j = 0; j < doctor['specialities'].length; j++) {
@@ -136,7 +137,7 @@ export class DoctorsService {
   /**
    * this methods iterates all doctors and all citys. If a city isn't already available in the array all it will be added
    */
-  getAllCitys() {
+  private getAllCitys() {
     for (let i = 0; i < this.doctors.length; i++) {
       const singleCity = this.doctors[i].city;
       if (!this.allCitys.find((city) => city == singleCity)) {
@@ -149,38 +150,42 @@ export class DoctorsService {
   /**
    * This function filters the doctors-array by city-name and speciality
    *
-   * @param speciality is a string from the search-input-field
-   * @param city is a string from the city-input-field
-   * @returns an array with all doctors that match to input city and speciality
+   * @param {string} speciality is a string from the search-input-field
+   * @param {string} city is a string from the city-input-field
+   * @returns {Object[]} an array with all doctors that match to input city and speciality
    */
-  getFilteredDoctors(speciality:string, city:string) {
-    let filteredByCity = this.doctors.filter((doctor) => doctor['city'] == city);
-    let filteredByCityandSpeciality = [];
+  private getFilteredDoctors(speciality: string, city: string) {
+    let filteredByCity = this.filterByCity(city);
+    let filteredByCityandSpeciality = this.filterBySpeciality(filteredByCity, speciality);
+    this.filteredDoctors = filteredByCityandSpeciality;
+  }
 
-    for (let i = 0; i < filteredByCity.length; i++) {
-      const doctor = filteredByCity[i];
-      for (let j = 0; j < doctor['specialities'].length; j++) {
-        const singleSpeciality = doctor['specialities'][j];
-        if (singleSpeciality == speciality) {
-          filteredByCityandSpeciality.push(doctor);
+  private filterByCity(city: string) {
+    return this.doctors.filter((doctor) => doctor['city'] == city || city == '');
+  }
+
+  /**
+   * This function filters the already part-filtered array with doctors by speciality and gives back an array with the matches
+   *
+   * @param {Object[]} filteredByCity array with filtered doctors just by city
+   * @param {string} speciality string by which we filter
+   * @returns {Object[]} array with doctors that match to input city
+   */
+  private filterBySpeciality(filteredByCity:any, speciality:string) {
+    let filteredByCityandSpeciality = [];
+    if (speciality == '') { // if there is no need to filter --> overgive the whole array
+      filteredByCityandSpeciality = filteredByCity;
+    } else {
+      for (let i = 0; i < filteredByCity.length; i++) { // iterate the array oft doctors
+        const doctor = filteredByCity[i];
+        for (let j = 0; j < doctor['specialities'].length; j++) { // iterate the array specialities of single doctor
+          if (doctor['specialities'][j] == speciality) { // if a single doctor has the searched speciality --> push him to the filtered-array
+            filteredByCityandSpeciality.push(doctor);
+          }
         }
       }
     }
-    console.log(filteredByCityandSpeciality);
     return filteredByCityandSpeciality;
   }
-
-  // getAllWeekdays() {
-  //   for (let i = 0; i < this.doctors.length; i++) {
-  //     const doctor = this.doctors[i];
-  //     const days = doctor['opening_hours'];
-  //     for (let i in days) {
-  //       if (!this.allWeekdays.find((weekday) => weekday == i)) {
-  //         this.allWeekdays.push(i);
-  //       }
-  //     }
-  //     console.log(this.allWeekdays);
-  //   }
-  // }
 
 }

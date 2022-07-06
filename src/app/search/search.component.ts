@@ -44,4 +44,8 @@ export class SearchComponent implements OnInit {
     return this.allCitys.filter(city => city.toLowerCase().includes(filterValue));
   }
 
+  searchDoctors() {
+    
+  }
+
 }
