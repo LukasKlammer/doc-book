@@ -113,6 +113,7 @@ export class DoctorsService {
   constructor() {
     this.getAllSpezialities();
     this.getAllCitys();
+    this.getFilteredDoctors('Zahnmedizin', 'München');
   }
 
 
@@ -143,6 +144,30 @@ export class DoctorsService {
       }
     }
     this.allCitys.sort();
+  }
+
+  /**
+   * This function filters the doctors-array by city-name and speciality
+   *
+   * @param speciality is a string from the search-input-field
+   * @param city is a string from the city-input-field
+   * @returns an array with all doctors that match to input city and speciality
+   */
+  getFilteredDoctors(speciality:string, city:string) {
+    let filteredByCity = this.doctors.filter((doctor) => doctor['city'] == city);
+    let filteredByCityandSpeciality = [];
+
+    for (let i = 0; i < filteredByCity.length; i++) {
+      const doctor = filteredByCity[i];
+      for (let j = 0; j < doctor['specialities'].length; j++) {
+        const singleSpeciality = doctor['specialities'][j];
+        if (singleSpeciality == speciality) {
+          filteredByCityandSpeciality.push(doctor);
+        }
+      }
+    }
+    console.log(filteredByCityandSpeciality);
+    return filteredByCityandSpeciality;
   }
 
   // getAllWeekdays() {
