@@ -1,0 +1,8 @@
+<main>
+  <div *ngIf="doctor">
+    <h1>{{ doctor['title'] }} {{ doctor['first_name'] }} {{ doctor['last_name'] }}</h1>
+
+  </div>
+  <h2 *ngIf="!doctor">Keine Einträge gefunden. Bitte verändern Sie Ihre Eingaben oder begeben Sie sich zur Startseite</h2>
+
+</main>

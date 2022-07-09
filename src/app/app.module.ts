@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { DocDetailsComponent } from './doc-details/doc-details.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatCardModule } from '@angular/material/card';
     FooterComponent,
     DocListComponent,
     SearchComponent,
-    DocCardComponent
+    DocCardComponent,
+    DocDetailsComponent
   ],
   imports: [
     BrowserModule,

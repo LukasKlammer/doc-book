@@ -187,4 +187,8 @@ export class DoctorsService {
     return filteredByCityandSpeciality;
   }
 
+  public getDoctorById(id:number) {
+    return this.doctors.filter(doctor => doctor.id == id);
+  }
+
 }

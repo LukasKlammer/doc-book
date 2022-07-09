@@ -1,7 +1,11 @@
 <main>
   <db-search></db-search>
   <div class="global-content-width">
-    <db-doc-card *ngFor="let oneDoctor of doctorsService.filteredDoctors" [doctor]="oneDoctor"></db-doc-card>
+    <db-doc-card
+      *ngFor="let oneDoctor of doctorsService.filteredDoctors"
+      [doctor]="oneDoctor"
+      [routerLink]="oneDoctor.id"
+    ></db-doc-card>
     <h2 *ngIf="doctorsService.filteredDoctors.length == 0">Keine Einträge gefunden. Bitte verändern Sie Ihre Suche</h2>
   </div>
 </main>
