@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DoctorsService } from '../shared/doctors.service';
+import { WeekdaysService } from '../shared/weekdays.service';
 
 @Component({
   selector: 'db-doc-details',
@@ -13,7 +14,7 @@ export class DocDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    public doctorsService: DoctorsService
+    public doctorsService: DoctorsService,
   ) { }
 
   ngOnInit(): void {
@@ -21,10 +22,8 @@ export class DocDetailsComponent implements OnInit {
       let idFromLink = (params.get('id') ||''); // Typ des Routen-Parameters ist string oder null. Methoden erwarten String, deshalb leerer String als Fallback-Wert
       let idAsNumber = Number (idFromLink);
       let foundDoctor = this.doctorsService.getDoctorById(idAsNumber);
-      console.log(foundDoctor);
       if (foundDoctor) {
         this.doctor = foundDoctor[0];
-        console.log(this.doctor);
       }
     });
   }

@@ -12,13 +12,5 @@
       <span>{{ doctor['zipcode'] }}, {{ doctor['city'] }}</span>
     </mat-card-content>
   </div>
-  <table>
-    <mat-card-title>Öffnungszeiten</mat-card-title>
-    <ng-container *ngFor="let weekday of weekdays; let i = index">
-      <tr>
-        <td>{{ weekdaysGerman[i] }}:</td>
-        <td>{{ doctor['opening_hours'][weekday]}} <span *ngIf="doctor['opening_hours'][weekday].includes(':')">Uhr</span></td>
-      </tr>
-    </ng-container>
-  </table>
+  <db-opening-hours [doctor]="doctor"></db-opening-hours>
 </mat-card>

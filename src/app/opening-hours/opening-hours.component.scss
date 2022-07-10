@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+}
+
+table {
+  display: flex;
+  flex-direction: column;
+  tr {
+    display: flex;
+    justify-content: space-between;
+    gap: 36px;
+  }
+  td:last-child {
+    width: 120px;
+    text-align: center;
+  }
+}
+
+.greyrow {
+  width: 300px;
+  background-color: rgb(244, 244, 244);
+  border-radius: 2px;
+  margin-bottom: 10px;
+  padding: 8px 10px 8px 15px;
+}

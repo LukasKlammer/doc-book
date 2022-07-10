@@ -8,17 +8,25 @@
     <div class="doctor-main-infos">
       <img src="assets/img/klara_weber.jpg" alt="doctor-portrait">
       <div>
-        <h2>Dr. med Vorname Nachname</h2>
+        <h1>Dr. med Vorname Nachname</h1>
         <span>specialities</span>
       </div>
     </div>
     <mat-divider></mat-divider>
-    <div>
-      <h3>Sprechzeiten</h3>
+    <div class="opening-hours-box">
+      <db-opening-hours  [doctor]="doctor"></db-opening-hours>
+      <span>Imagebild Öffnungszeiten</span>
     </div>
     <mat-divider></mat-divider>
-    <div>
-      <h3>Adresse</h3>
+    <div class="adress-box">
+      <div>
+        <h2>Adresse</h2>
+        <span>street</span>
+        <span>zipcode + city</span>
+      </div>
+      <div>
+        https://stackoverflow.com/questions/37595534/how-do-i-load-the-address-dynamically-in-an-embedded-google-map
+      </div>
     </div>
     <mat-divider></mat-divider>
 

@@ -27,17 +27,3 @@ mat-card {
 .center-content {
   flex: 1;
 }
-
-table {
-  display: flex;
-  flex-direction: column;
-  tr {
-    display: flex;
-    justify-content: space-between;
-    gap: 36px;
-  }
-  td:last-child {
-    width: 120px;
-    text-align: center;
-  }
-}

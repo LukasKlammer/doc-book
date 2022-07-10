@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { DocDetailsComponent } from './doc-details/doc-details.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { OpeningHoursComponent } from './opening-hours/opening-hours.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatDividerModule } from '@angular/material/divider';
     DocListComponent,
     SearchComponent,
     DocCardComponent,
-    DocDetailsComponent
+    DocDetailsComponent,
+    OpeningHoursComponent
   ],
   imports: [
     BrowserModule,

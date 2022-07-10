@@ -1,0 +1,9 @@
+<table>
+  <h2>Sprechzeiten</h2>
+  <ng-container *ngFor="let weekday of weekdaysService.weekdays; let i = index">
+    <tr [class.greyrow]="isDetailView">
+      <td>{{ weekdaysService.weekdaysGerman[i] }}:</td>
+      <td>{{ doctor['opening_hours'][weekday]}} <span *ngIf="doctor['opening_hours'][weekday].includes(':')">Uhr</span></td>
+    </tr>
+  </ng-container>
+</table>
