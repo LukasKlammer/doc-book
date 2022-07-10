@@ -1,6 +1,26 @@
-<main>
-  <div *ngIf="doctor">
-    <h1>{{ doctor['title'] }} {{ doctor['first_name'] }} {{ doctor['last_name'] }}</h1>
+<main class="global-content-width">
+  <a routerLink="/doc-list">
+    <img src="assets/img/arrow-left.png" alt="">
+    zurück zur Liste
+  </a>
+  <div class="doctor-all-infos" *ngIf="doctor">
+    <img class="doctor-header" src="assets/img/doctor-header.jpg" alt="doctor-header-image">
+    <div class="doctor-main-infos">
+      <img src="assets/img/klara_weber.jpg" alt="doctor-portrait">
+      <div>
+        <h2>Dr. med Vorname Nachname</h2>
+        <span>specialities</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+      <h3>Sprechzeiten</h3>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+      <h3>Adresse</h3>
+    </div>
+    <mat-divider></mat-divider>
 
   </div>
   <h2 *ngIf="!doctor">Keine Einträge gefunden. Bitte verändern Sie Ihre Eingaben oder begeben Sie sich zur Startseite</h2>

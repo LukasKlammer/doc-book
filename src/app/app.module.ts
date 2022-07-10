@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { DocDetailsComponent } from './doc-details/doc-details.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { DocDetailsComponent } from './doc-details/doc-details.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
