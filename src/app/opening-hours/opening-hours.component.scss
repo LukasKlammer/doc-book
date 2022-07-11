@@ -1,5 +1,23 @@
 :host {
   display: flex;
+  max-width: 100%;
+}
+
+.table-image-container {
+  display: flex;
+  max-width: 100%;
+}
+
+.image-box {
+  padding: 20px 0px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+img {
+  box-sizing: content-box;
+  width: calc(100% - 20px);
 }
 
 table {

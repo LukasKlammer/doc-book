@@ -1,9 +1,15 @@
-<table>
-  <h2>Sprechzeiten</h2>
-  <ng-container *ngFor="let weekday of weekdaysService.weekdays; let i = index">
-    <tr [class.greyrow]="isDetailView">
-      <td>{{ weekdaysService.weekdaysGerman[i] }}:</td>
-      <td>{{ doctor['opening_hours'][weekday]}} <span *ngIf="doctor['opening_hours'][weekday].includes(':')">Uhr</span></td>
-    </tr>
-  </ng-container>
-</table>
+<div class="table-image-container">
+  <table>
+    <h2>Sprechzeiten</h2>
+    <ng-container *ngFor="let weekday of weekdaysService.weekdays; let i = index">
+      <tr [class.greyrow]="isDetailView">
+        <td>{{ weekdaysService.weekdaysGerman[i] }}:</td>
+        <td>{{ doctor['opening_hours'][weekday]}} <span *ngIf="doctor['opening_hours'][weekday].includes(':')">Uhr</span></td>
+      </tr>
+    </ng-container>
+  </table>
+  <div class="image-box">
+    <img *ngIf="isDetailView" src="assets/img/opening-hours.jpg" alt="image-opening-hours">
+  </div>
+</div>
+

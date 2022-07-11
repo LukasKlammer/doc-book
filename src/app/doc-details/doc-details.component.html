@@ -6,31 +6,35 @@
   <div class="doctor-all-infos" *ngIf="doctor">
     <img class="doctor-header" src="assets/img/doctor-header.jpg" alt="doctor-header-image">
     <div class="doctor-main-infos">
-      <img src="assets/img/klara_weber.jpg" alt="doctor-portrait">
+      <img src="assets/{{ doctor['img'] }}" alt="doctor-portrait">
       <div>
-        <h1>Dr. med Vorname Nachname</h1>
-        <span>specialities</span>
+        <h1>{{ doctor['title'] }} {{ doctor['first_name'] }} {{ doctor['last_name'] }}</h1>
+        <span>{{ doctor['specialities'].join(', ') }}</span>
       </div>
     </div>
     <mat-divider></mat-divider>
     <div class="opening-hours-box">
       <db-opening-hours  [doctor]="doctor"></db-opening-hours>
-      <span>Imagebild Öffnungszeiten</span>
     </div>
     <mat-divider></mat-divider>
     <div class="adress-box">
       <div>
         <h2>Adresse</h2>
-        <span>street</span>
-        <span>zipcode + city</span>
+        <span>{{ doctor['street'] }}</span><br>
+        <span>{{ doctor['zipcode'] }}, {{ doctor['city'] }}</span>
       </div>
       <div>
-        https://stackoverflow.com/questions/37595534/how-do-i-load-the-address-dynamically-in-an-embedded-google-map
+        <iframe
+          width="450"
+          height="250"
+          frameborder="0" style="border:0"
+          referrerpolicy="no-referrer-when-downgrade"
+          [src]="safeSrc"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
     <mat-divider></mat-divider>
-
   </div>
   <h2 *ngIf="!doctor">Keine Einträge gefunden. Bitte verändern Sie Ihre Eingaben oder begeben Sie sich zur Startseite</h2>
-
 </main>

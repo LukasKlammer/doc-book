@@ -44,11 +44,15 @@ a {
     object-fit: cover;
     position: absolute;
     left: 20px;
-    top: -120px;
+    top: -70px;
     border-radius: 4px;
   }
   div {
     padding-left: 170px;
+    padding-bottom: 50px;
+  }
+  h1 {
+    margin: 12px 0px;
   }
 }
 
@@ -59,4 +63,9 @@ a {
 
 .adress-box {
   display: flex;
+  justify-content: space-between;
+}
+
+mat-divider {
+  margin: 16px 0px 8px 0px !important;
 }
