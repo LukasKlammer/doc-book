@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { DocDetailsComponent } from './doc-details/doc-details.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { OpeningHoursComponent } from './opening-hours/opening-hours.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { OpeningHoursComponent } from './opening-hours/opening-hours.component';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -36,5 +36,6 @@
     </div>
     <mat-divider></mat-divider>
   </div>
-  <h2 *ngIf="!doctor">Keine Einträge gefunden. Bitte verändern Sie Ihre Eingaben oder begeben Sie sich zur Startseite</h2>
+  <h2 *ngIf="!doctor && !doctorsService.isLoading">Keine Einträge gefunden. Bitte navigieren Sie zurück zur Liste.</h2>
+  <mat-spinner *ngIf="doctorsService.isLoading"></mat-spinner>
 </main>

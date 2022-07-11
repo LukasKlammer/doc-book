@@ -6,7 +6,8 @@
       [doctor]="oneDoctor"
       [routerLink]="oneDoctor.id"
     ></db-doc-card>
-    <h2 *ngIf="doctorsService.filteredDoctors.length == 0">Keine Einträge gefunden. Bitte verändern Sie Ihre Suche</h2>
+    <h2 *ngIf="doctorsService.filteredDoctors.length == 0 && !doctorsService.isLoading">Keine Einträge gefunden. Bitte verändern Sie Ihre Suche</h2>
+    <mat-spinner *ngIf="doctorsService.isLoading"></mat-spinner>
   </div>
 </main>
 
