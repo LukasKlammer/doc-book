@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Doctor } from './doctor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorsService {
 
-  doctors = [{
+  doctors:Doctor[] = [{
     "id": 1,
     "title": "Dr. med.",
     "first_name": "Anton",

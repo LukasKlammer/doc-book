@@ -11,7 +11,6 @@ import { DoctorsService } from '../shared/doctors.service';
 export class DocDetailsComponent implements OnInit {
 
   doctor;
-  mapsUrl:string = "";
   safeSrc: SafeResourceUrl;
 
   constructor(
@@ -25,13 +24,12 @@ export class DocDetailsComponent implements OnInit {
       let idFromLink = (params.get('id') ||''); // Typ des Routen-Parameters ist string oder null. Methoden erwarten String, deshalb leerer String als Fallback-Wert
       let idAsNumber = Number (idFromLink);
       let foundDoctor = this.doctorsService.getDoctorById(idAsNumber);
-      if (foundDoctor) {
+      if (foundDoctor.length > 0) {
         this.doctor = foundDoctor[0];
+        const adressWithoutSpaces = this.doctor['street'].replace(/\s+/g, '');
+        let mapsUrl:string = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBzvvAQ8SDchPy_DBPBKyVtnxHSN1QpvIw&q=${adressWithoutSpaces}+${this.doctor['zipcode']}+${this.doctor['city']}+Germany`;
+        this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(mapsUrl);
       }
     });
-    this.doctor['street'] = this.doctor['street'].replace(/\s+/g, '');
-    this.mapsUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBzvvAQ8SDchPy_DBPBKyVtnxHSN1QpvIw&q=${this.doctor['street']}+${this.doctor['zipcode']}+${this.doctor['city']}+Germany`;
-    this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.mapsUrl);
   }
-
 }
