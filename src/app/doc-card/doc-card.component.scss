@@ -27,3 +27,30 @@ mat-card {
 .center-content {
   flex: 1;
 }
+
+.mobile-d-none {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .mobile-d-none {
+    display: none;
+  }
+}
+
+@media (max-width: 350px) {
+  mat-card-title {
+    font-size: 18px;
+  }
+  mat-card {
+    gap: 12px;
+    img {
+      width: 100px;
+      height: 130px;
+      object-fit: cover;
+    }
+  }
+}
+
+
+

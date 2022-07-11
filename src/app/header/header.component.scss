@@ -6,3 +6,8 @@ header {
   }
 }
 
+@media (max-width: 500px) {
+  header {
+    padding-left: 16px;
+  }
+}

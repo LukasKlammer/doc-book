@@ -19,7 +19,19 @@ footer a {
 }
 
 .footer-links-container {
-  width: 100%;
+  padding: 0px 16px;
   display: flex;
-  justify-content: space-between;
+  gap: 12px;
+}
+
+@media (max-width: 500px) {
+  .footer-links-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .global-content-width {
+    gap: 8px;
+  }
+
 }

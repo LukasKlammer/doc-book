@@ -22,3 +22,10 @@ form {
 ::ng-deep .mat-form-field-wrapper{
   margin-bottom: -1.25em;
 }
+
+@media (max-width: 650px) {
+  form {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
