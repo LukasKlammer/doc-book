@@ -8,7 +8,7 @@ export interface Doctor {
   "street":string;
   "zipcode":string;
   "city":string;
-  "opening_hours":Opening
+  "opening_hours":Opening;
 }
 
 export interface Opening {
