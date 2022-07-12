@@ -11,17 +11,12 @@ import { DoctorsService } from '../shared/doctors.service';
 })
 export class SearchComponent implements OnInit {
 
-  allSpecialities:string[] = ['Spezialität'];
   controlSpecialitiesInput = new FormControl('');
   filteredOptionsSpecialities: Observable<string[]>;
-  allCitys:string[] = [];
   controlCityInput = new FormControl('');
   filteredOptionsCitys: Observable<string[]>;
 
-  constructor(public doctorsService: DoctorsService) {
-    this.allSpecialities = this.doctorsService.allSpecialities;
-    this.allCitys = this.doctorsService.allCitys;
-  }
+  constructor(public doctorsService: DoctorsService) {  }
 
   ngOnInit(): void {
     this.filteredOptionsSpecialities = this.controlSpecialitiesInput.valueChanges.pipe(
@@ -39,7 +34,7 @@ export class SearchComponent implements OnInit {
       this.searchDoctors();
     }
     const filterValue = value.toLowerCase();
-    return this.allSpecialities.filter(speciality => speciality.toLowerCase().includes(filterValue));
+    return this.doctorsService.allSpecialities.filter(speciality => speciality.toLowerCase().includes(filterValue));
   }
 
   private _filterCitys(value: string): string[] {
@@ -47,14 +42,24 @@ export class SearchComponent implements OnInit {
       this.searchDoctors();
     }
     const filterValue = value.toLowerCase();
-    return this.allCitys.filter(city => city.toLowerCase().includes(filterValue));
+    return this.doctorsService.allCitys.filter(city => city.toLowerCase().includes(filterValue));
+  }
+
+  public clickOnInput(event) {
+    const inputId = event.target.attributes.id.nodeValue; // searches in the event the id from the input field that was clicked
+    console.log('Input clicked: ', inputId);
+    if(inputId == 'mat-input-0') {
+      this.controlSpecialitiesInput.setValue(this.controlSpecialitiesInput.value); // simulates a value change in input --> autocomplete opens
+    } else if (inputId == 'mat-input-1') {
+      this.controlCityInput.setValue(this.controlCityInput.value);
+    }
   }
 
   public searchDoctors() {
     this.doctorsService.getFilteredDoctors(this.controlSpecialitiesInput.value, this.controlCityInput.value);
   }
 
-  public clearInput(input : HTMLInputElement){;
+  public clearInput(input: HTMLInputElement) {
     if (input.ariaLabel == "Ort") {
       this.controlCityInput.setValue('');
     } else {

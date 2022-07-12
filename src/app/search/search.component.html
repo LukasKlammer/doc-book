@@ -8,7 +8,8 @@
              aria-label="Fachgebiet"
              matInput
              [formControl]="controlSpecialitiesInput"
-             [matAutocomplete]="autoSpeciality">
+             [matAutocomplete]="autoSpeciality"
+             (click)="clickOnInput($event)">
       <button type='button' *ngIf="controlCityInput" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput(inputSpeciality)">
         <mat-icon>close</mat-icon>
       </button>
@@ -27,7 +28,8 @@
              aria-label="Ort"
              matInput
              [formControl]="controlCityInput"
-             [matAutocomplete]="autoCity">
+             [matAutocomplete]="autoCity"
+             (click)="clickOnInput($event)">
       <button type='button' *ngIf="controlCityInput" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput(inputCity)">
           <mat-icon>close</mat-icon>
       </button>

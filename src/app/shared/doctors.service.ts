@@ -18,9 +18,6 @@ export class DoctorsService {
 
   constructor() {
     this.getDoctors();
-    this.getAllSpezialities();
-    this.getAllCitys();
-    this.getFilteredDoctors('', '');
   }
 
   private async getDoctors() {
