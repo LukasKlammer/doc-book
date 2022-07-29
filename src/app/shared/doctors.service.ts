@@ -1,44 +1,57 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Doctor } from './doctor';
-
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Doctor } from '../modules/doctor.class';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorsService {
 
-  doctors: Doctor[] = [ ]
+  doctors: Doctor[] = [];
 
   private API_URL = 'https://lukas-klammer.developerakademie.net/doc-book/get_doctors.php';
   isLoading = true;
-  numberOfTrials = 10; // 10 trials, if server error occours
+  // numberOfTrials = 10; // 10 trials, if server error occours
   filteredDoctors = []
   allSpecialities = [];
   allCitys = [];
 
-  constructor() {
-    this.getDoctors();
+  constructor(private firestore: AngularFirestore) {
+    // this.getDoctors();
+
+    this.firestore
+      .collection('doctors')
+      .valueChanges({ idField: 'customIdName' })
+      .subscribe((changes: any) => {
+        console.log(changes);
+        this.doctors = changes;
+        this.isLoading = false;
+        this.filterDoctorsAndSpecialities();
+      })
   }
 
-  private async getDoctors() {
-    try {
-      let response = await fetch(this.API_URL);
-      this.doctors = await response.json();
-      this.isLoading = false;
-      this.filterDoctorsAndSpecialities();
-    } catch (e) {
-      await this.retryLoading();
-    }
-  }
 
-  private async retryLoading() {
-    if (this.numberOfTrials >= 0) {
-      this.getDoctors();
-      this.numberOfTrials--;
-    } else {
-      alert('Server error. Please retry later.');
-    }
-  }
+
+
+  // private async getDoctors() {
+  //   try {
+  //     let response = await fetch(this.API_URL);
+  //     this.doctors = await response.json();
+  //     this.isLoading = false;
+  //     this.filterDoctorsAndSpecialities();
+  //   } catch (e) {
+  //     await this.retryLoading();
+  //   }
+  // }
+
+  // private async retryLoading() {
+  //   if (this.numberOfTrials >= 0) {
+  //     this.getDoctors();
+  //     this.numberOfTrials--;
+  //   } else {
+  //     alert('Server error. Please retry later.');
+  //   }
+  // }
 
   private filterDoctorsAndSpecialities() {
     this.getAllSpezialities();
@@ -121,11 +134,17 @@ export class DoctorsService {
     return filteredByCityandSpeciality;
   }
 
-  public async getDoctorById(id: number) {
-    if (this.doctors.length == 0) { // if a user opens a doctor by url+id instead of the list we must load it from server
-      await this.getDoctors();
-    }
-    return this.doctors.filter(doctor => doctor.id == id);
+  // public async getDoctorById(id: number) {
+  //   if (this.doctors.length == 0) { // if a user opens a doctor by url+id instead of the list we must load it from server
+  //     await this.getDoctors();
+  //   }
+  //   return this.doctors.filter(doctor => doctor.id == id);
+  // }
+
+  public addDoctor(doctor: Doctor) {
+    this.firestore
+      .collection('doctors')
+      .add(doctor.toJSON())
   }
 
 }

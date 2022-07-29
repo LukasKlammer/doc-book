@@ -108,6 +108,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "doc-book:build:production",
+            "firebaseProject": "docbook-280f2",
+            "firebaseHostingSite": "docbook-280f2"
+          }
         }
       }
     }

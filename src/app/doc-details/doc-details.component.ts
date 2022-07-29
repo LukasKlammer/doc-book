@@ -20,22 +20,24 @@ export class DocDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      let idFromLink = (params.get('id') ||''); // Typ des Routen-Parameters ist string oder null. Methoden erwarten String, deshalb leerer String als Fallback-Wert
-      this.initDetailComponent(idFromLink);
-    });
+    // this.route.paramMap.subscribe(params => {
+    //   let idFromLink = (params.get('id') ||''); // Typ des Routen-Parameters ist string oder null. Methoden erwarten String, deshalb leerer String als Fallback-Wert
+    //   this.initDetailComponent(idFromLink);
+    // });
   }
 
-  private async initDetailComponent(idFromLink) {
-    let idAsNumber = Number (idFromLink);
-    let foundDoctor = await this.doctorsService.getDoctorById(idAsNumber);
-    if (foundDoctor.length > 0) {
-      this.doctor = foundDoctor[0];
-      const adressWithoutSpaces = this.doctor['street'].replace(/\s+/g, '');
-      let mapsUrl:string = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBzvvAQ8SDchPy_DBPBKyVtnxHSN1QpvIw&q=${adressWithoutSpaces}+${this.doctor['zipcode']}+${this.doctor['city']}+Germany`;
-      this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(mapsUrl);
-    }
-  }
+  // private async initDetailComponent(idFromLink) {
+  //   let idAsNumber = Number (idFromLink);
+  //   let foundDoctor = await this.doctorsService.getDoctorById(idAsNumber);
+  //   if (foundDoctor.length > 0) {
+  //     this.doctor = foundDoctor[0];
+  //     console.log(this.doctor);
+
+  //     const adressWithoutSpaces = this.doctor['street'].replace(/\s+/g, '');
+  //     let mapsUrl:string = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBzvvAQ8SDchPy_DBPBKyVtnxHSN1QpvIw&q=${adressWithoutSpaces}+${this.doctor['zipcode']}+${this.doctor['city']}+Germany`;
+  //     this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(mapsUrl);
+  //   }
+  // }
 
 }
 

@@ -20,6 +20,11 @@ import { DocDetailsComponent } from './doc-details/doc-details.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { OpeningHoursComponent } from './opening-hours/opening-hours.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 
 
 @NgModule({
@@ -45,7 +50,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatIconModule,
     MatCardModule,
     MatDividerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]

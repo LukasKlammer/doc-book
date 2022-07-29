@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "docbook-280f2": {
+      "hosting": {
+        "doc-book": [
+          "docbook-280f2"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "docbook-280f2"
+  }
+}
