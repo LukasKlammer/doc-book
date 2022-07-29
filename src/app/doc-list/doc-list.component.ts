@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TitleStrategy } from '@angular/router';
+import { DialogAddDoctorComponent } from '../dialog-add-doctor/dialog-add-doctor.component';
 import { DoctorsService } from '../shared/doctors.service';
 
 @Component({
@@ -9,9 +11,13 @@ import { DoctorsService } from '../shared/doctors.service';
 })
 export class DocListComponent implements OnInit {
 
-  constructor(public doctorsService: DoctorsService) { }
+  constructor(public doctorsService: DoctorsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog() {
+    this.dialog.open(DialogAddDoctorComponent);
   }
 
 }

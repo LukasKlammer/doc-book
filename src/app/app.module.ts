@@ -20,11 +20,13 @@ import { DocDetailsComponent } from './doc-details/doc-details.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { OpeningHoursComponent } from './opening-hours/opening-hours.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { DialogAddDoctorComponent } from './dialog-add-doctor/dialog-add-doctor.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     SearchComponent,
     DocCardComponent,
     DocDetailsComponent,
-    OpeningHoursComponent
+    OpeningHoursComponent,
+    DialogAddDoctorComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     MatCardModule,
     MatDividerModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     AngularFirestoreModule,
