@@ -1,7 +1,7 @@
 <h1>Arzt hinzufügen</h1>
 
-<mat-dialog-content>
-  <form class="add-doctor-form">
+<form class="add-doctor-form" (ngSubmit)="save(doctorForm)" #doctorForm="ngForm">
+  <mat-dialog-content>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Vorname</mat-label>
@@ -17,7 +17,7 @@
         <mat-label>Titel</mat-label>
         <input [(ngModel)]="doctor.title" matInput placeholder="z. B. Dr. Univ. Med." name="title" required>
       </mat-form-field>
-      <mat-form-field class="example-chip-list" appearance="outline">
+      <mat-form-field class="example-chip-list" appearance="outline" required>
         <mat-label>Spezialisierungen</mat-label>
         <mat-chip-list #chipList aria-label="Fruit selection">
           <mat-chip *ngFor="let speciality of doctor.specialities"
@@ -116,9 +116,13 @@
         </mat-form-field>
       </div>
     </div>
-  </form>
-</mat-dialog-content>
-<div mat-dialog-actions>
-  <button [disabled]="false" mat-raised-button (click)="dialogRef.close()">abbrechen</button>
-  <button [disabled]="false" color="primary" mat-raised-button (click)="save()" cdkFocusInitial>speichern</button>
-</div>
+  </mat-dialog-content>
+  <div mat-dialog-actions align="end">
+    <button [disabled]="isLoading" mat-raised-button (click)="onNoClick()">abbrechen</button>
+    <button [disabled]="isLoading" mat-raised-button color="primary" cdkFocusInitial (click)="isSaveClicked = true">
+      <mat-icon>save</mat-icon>
+      speichern
+    </button>
+  </div>
+</form>
+

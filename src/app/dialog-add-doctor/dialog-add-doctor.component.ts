@@ -18,6 +18,8 @@ export class DialogAddDoctorComponent implements OnInit {
   specialityCtrl = new FormControl('');
   @ViewChild('specialityInput') specialityInput: ElementRef<HTMLInputElement>;
   separatorKeysCodes: number[] = [ENTER, COMMA];
+  isSaveClicked: boolean = false;
+  isLoading: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<DialogAddDoctorComponent>, public doctorsService: DoctorsService) { }
 
@@ -50,8 +52,11 @@ export class DialogAddDoctorComponent implements OnInit {
     this.allSpecialities.push(item);
   }
 
-  public save() {
-    console.log('save button clicked');
+  public save(ngForm: any) {
+    if (ngForm.submitted && ngForm.form.valid && this.isSaveClicked) {
+      this.isLoading = true;
+      this.doctorsService.addDoctor(this.doctor, this.dialogRef);
+    }
   }
 
   public selected(event: MatAutocompleteSelectedEvent): void {
@@ -59,6 +64,11 @@ export class DialogAddDoctorComponent implements OnInit {
     this.remove(this.allSpecialities, event.option.viewValue)
     this.specialityInput.nativeElement.value = '';
     this.specialityCtrl.setValue(null);
+  }
+
+  onNoClick(): void {
+    this.isSaveClicked = false;
+    this.dialogRef.close();
   }
 
 }

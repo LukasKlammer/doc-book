@@ -29,9 +29,6 @@ export class DoctorsService {
       })
   }
 
-
-
-
   // private async getDoctors() {
   //   try {
   //     let response = await fetch(this.API_URL);
@@ -140,10 +137,13 @@ export class DoctorsService {
   //   return this.doctors.filter(doctor => doctor.id == id);
   // }
 
-  public addDoctor(doctor: Doctor) {
+  public addDoctor(doctor: Doctor, dialogRef: any) {
     this.firestore
       .collection('doctors')
       .add(doctor.toJSON())
+      .then((result: any) => {
+        dialogRef.close();
+      })
   }
 
 }

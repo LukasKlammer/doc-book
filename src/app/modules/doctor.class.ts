@@ -24,7 +24,7 @@ export class Doctor {
     this.first_name = obj ? obj.first_name : '';
     this.last_name = obj ? obj.last_name : '';
     this.specialities = obj ? obj.specialities : [];
-    this.img = obj ? obj.img : '';
+    this.img = obj ? obj.img : 'img/eberhard_olenberger.jpg';
     this.street = obj ? obj.street : '';
     this.zipcode = obj ? obj.zipcode : '';
     this.city = obj ? obj.city : '';
@@ -42,7 +42,15 @@ export class Doctor {
       street: this.street,
       zipcode: this.zipcode,
       city: this.city,
-      opening_hours: this.opening_hours,
+      opening_hours: {
+        monday: this.opening_hours.monday,
+        tuesday: this.opening_hours.tuesday,
+        wednesday: this.opening_hours.wednesday,
+        thursday: this.opening_hours.thursday,
+        friday: this.opening_hours.friday,
+        saturday: this.opening_hours.saturday,
+        sunday: this.opening_hours.sunday,
+      },
     }
   }
 }
