@@ -23,7 +23,6 @@ export class DoctorsService {
       .collection('doctors')
       .valueChanges({ idField: 'customIdName' })
       .subscribe((changes: any) => {
-        console.log(changes);
         this.doctors = changes;
         this.isLoading = false;
         this.filterDoctorsAndSpecialities();

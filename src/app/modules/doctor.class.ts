@@ -23,7 +23,7 @@ export class Doctor {
     this.title = obj ? obj.title : '';
     this.first_name = obj ? obj.first_name : '';
     this.last_name = obj ? obj.last_name : '';
-    this.specialities = obj ? obj.specialities : '';
+    this.specialities = obj ? obj.specialities : [];
     this.img = obj ? obj.img : '';
     this.street = obj ? obj.street : '';
     this.zipcode = obj ? obj.zipcode : '';
@@ -57,12 +57,12 @@ class Opening {
   "sunday": string;
 
   constructor(obj?: any) {
-    this.monday = obj ? obj.monday : '08:00 - 16:00';
-    this.tuesday = obj ? obj.tuesday : '08:00 - 18:00';
-    this.wednesday = obj ? obj.wednesday : 'closed';
-    this.thursday = obj ? obj.thursday : '08:00 - 18:00';
-    this.friday = obj ? obj.friday : '08:00 - 14:00';
-    this.saturday = obj ? obj.saturday : 'closed';
-    this.sunday = obj ? obj.sunday : 'closed';
+    this.monday = obj ? obj.monday : '';
+    this.tuesday = obj ? obj.tuesday : '';
+    this.wednesday = obj ? obj.wednesday : '';
+    this.thursday = obj ? obj.thursday : '';
+    this.friday = obj ? obj.friday : '';
+    this.saturday = obj ? obj.saturday : '';
+    this.sunday = obj ? obj.sunday : '';
   }
 }

@@ -20,6 +20,7 @@ import { DocDetailsComponent } from './doc-details/doc-details.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { OpeningHoursComponent } from './opening-hours/opening-hours.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
@@ -27,6 +28,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { DialogAddDoctorComponent } from './dialog-add-doctor/dialog-add-doctor.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -55,6 +57,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDividerModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    FormsModule,
+    MatChipsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     AngularFirestoreModule,
