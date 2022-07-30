@@ -19,12 +19,12 @@ export class Doctor {
   };
 
   constructor(obj?: any) {
-    this.id = obj ? obj.id : 0;
+    this.id = obj ? obj.id : '';
     this.title = obj ? obj.title : '';
     this.first_name = obj ? obj.first_name : '';
     this.last_name = obj ? obj.last_name : '';
     this.specialities = obj ? obj.specialities : [];
-    this.img = obj ? obj.img : 'img/eberhard_olenberger.jpg';
+    this.img = obj ? obj.img : 'img/doctor.png';
     this.street = obj ? obj.street : '';
     this.zipcode = obj ? obj.zipcode : '';
     this.city = obj ? obj.city : '';

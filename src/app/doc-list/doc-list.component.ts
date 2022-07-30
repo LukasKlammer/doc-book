@@ -17,7 +17,8 @@ export class DocListComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DialogAddDoctorComponent);
+    const dialog = this.dialog.open(DialogAddDoctorComponent);
+    dialog.componentInstance.doctor.id = this.doctorsService.doctors.length + 1;
   }
 
 }

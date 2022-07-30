@@ -11,14 +11,15 @@ export class DoctorsService {
 
   private API_URL = 'https://lukas-klammer.developerakademie.net/doc-book/get_doctors.php';
   isLoading = true;
-  // numberOfTrials = 10; // 10 trials, if server error occours
   filteredDoctors = []
   allSpecialities = [];
   allCitys = [];
 
   constructor(private firestore: AngularFirestore) {
-    // this.getDoctors();
+    this.getDoctors();
+  }
 
+  private getDoctors() {
     this.firestore
       .collection('doctors')
       .valueChanges({ idField: 'customIdName' })
@@ -28,26 +29,6 @@ export class DoctorsService {
         this.filterDoctorsAndSpecialities();
       })
   }
-
-  // private async getDoctors() {
-  //   try {
-  //     let response = await fetch(this.API_URL);
-  //     this.doctors = await response.json();
-  //     this.isLoading = false;
-  //     this.filterDoctorsAndSpecialities();
-  //   } catch (e) {
-  //     await this.retryLoading();
-  //   }
-  // }
-
-  // private async retryLoading() {
-  //   if (this.numberOfTrials >= 0) {
-  //     this.getDoctors();
-  //     this.numberOfTrials--;
-  //   } else {
-  //     alert('Server error. Please retry later.');
-  //   }
-  // }
 
   private filterDoctorsAndSpecialities() {
     this.getAllSpezialities();
@@ -130,12 +111,12 @@ export class DoctorsService {
     return filteredByCityandSpeciality;
   }
 
-  // public async getDoctorById(id: number) {
-  //   if (this.doctors.length == 0) { // if a user opens a doctor by url+id instead of the list we must load it from server
-  //     await this.getDoctors();
-  //   }
-  //   return this.doctors.filter(doctor => doctor.id == id);
-  // }
+  public getDoctorById(id: number) {
+    if (this.doctors.length == 0) { // if a user opens a doctor by url+id instead of the list we must load it from server
+      this.getDoctors();
+    }
+    return this.doctors.filter(doctor => doctor.id == id);
+  }
 
   public addDoctor(doctor: Doctor, dialogRef: any) {
     this.firestore

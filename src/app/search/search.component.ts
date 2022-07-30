@@ -47,7 +47,6 @@ export class SearchComponent implements OnInit {
 
   public clickOnInput(event) {
     const inputId = event.target.attributes.id.nodeValue; // searches in the event the id from the input field that was clicked
-    console.log('Input clicked: ', inputId);
     if(inputId == 'mat-input-0') {
       this.controlSpecialitiesInput.setValue(this.controlSpecialitiesInput.value); // simulates a value change in input --> autocomplete opens
     } else if (inputId == 'mat-input-1') {

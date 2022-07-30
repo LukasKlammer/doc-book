@@ -32,3 +32,18 @@ mat-divider {
   justify-content: space-between;
   align-items: center;
 }
+
+@media (max-width: 650px) {
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .openings-row {
+    flex-direction: column;
+  }
+
+  .openings-container {
+    width: 100%;
+  }
+}
