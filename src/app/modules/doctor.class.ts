@@ -8,6 +8,7 @@ export class Doctor {
   street: string;
   zipcode: number;
   city: string;
+  country: string;
   opening_hours: Opening = {
     "monday": "08:00 - 10:00",
     "tuesday": "08:00 - 10:00",
@@ -28,6 +29,7 @@ export class Doctor {
     this.street = obj ? obj.street : '';
     this.zipcode = obj ? obj.zipcode : '';
     this.city = obj ? obj.city : '';
+    this.country = obj ? obj.country : '';
     this.opening_hours = obj ? new Opening(obj.opening_hours) : new Opening();
   }
 
@@ -42,6 +44,7 @@ export class Doctor {
       street: this.street,
       zipcode: this.zipcode,
       city: this.city,
+      country: this.country,
       opening_hours: {
         monday: this.opening_hours.monday,
         tuesday: this.opening_hours.tuesday,

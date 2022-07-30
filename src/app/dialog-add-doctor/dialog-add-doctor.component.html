@@ -39,13 +39,17 @@
       </mat-form-field>
     </div>
     <div class="row">
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="outline">
         <mat-label>Straße + Hausnummer</mat-label>
         <input [(ngModel)]="doctor.street" matInput placeholder="Musterstraße 25" name="street" required>
       </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Land</mat-label>
+        <input [(ngModel)]="doctor.country" matInput placeholder="Deutschland, Österreich, Italien, Schweiz, ..." name="country" required>
+      </mat-form-field>
     </div>
     <div class="row">
-      <mat-form-field class="example-full-width" appearance="fill" appearance="outline">
+      <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Postleitzahl</mat-label>
         <input type="number" [(ngModel)]="doctor.zipcode" matInput #zipcode maxlength="5" placeholder="z. B. 94105"
           value="" name="zipcode" required>

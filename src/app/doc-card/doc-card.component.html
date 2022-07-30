@@ -9,7 +9,8 @@
     </mat-card-subtitle>
     <mat-card-content>
       <span>{{ doctor['street'] }}</span><br>
-      <span>{{ doctor['zipcode'] }}, {{ doctor['city'] }}</span>
+      <span>{{ doctor['zipcode'] }}, {{ doctor['city'] }}</span><br>
+      <span>{{ doctor['country'] }}</span>
     </mat-card-content>
   </div>
   <db-opening-hours [doctor]="doctor" class="mobile-d-none"></db-opening-hours>

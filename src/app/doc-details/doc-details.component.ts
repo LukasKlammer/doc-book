@@ -32,7 +32,7 @@ export class DocDetailsComponent implements OnInit {
     if (foundDoctor.length > 0) {
       this.doctor = foundDoctor[0];
       const adressWithoutSpaces = this.doctor['street'].replace(/\s+/g, '');
-      let mapsUrl:string = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBzvvAQ8SDchPy_DBPBKyVtnxHSN1QpvIw&q=${adressWithoutSpaces}+${this.doctor['zipcode']}+${this.doctor['city']}+Germany`;
+      let mapsUrl:string = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBzvvAQ8SDchPy_DBPBKyVtnxHSN1QpvIw&q=${adressWithoutSpaces}+${this.doctor['zipcode']}+${this.doctor['city']}+${this.doctor['country']}`;
       this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(mapsUrl);
     }
   }
